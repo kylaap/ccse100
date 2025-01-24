@@ -32,9 +32,80 @@ Step 9 and 10 are both steps that check for errors again. Step 11, the last step
 using namespace std;
 int main()
 {
-    cout << "Name: Kyla Powell" << endl;
-    cout << "Hometown: Knoxville, TN" << endl;
-    cout << "Major: Chemistry" << endl;
+    cout << "\tKyla\t\tKnoxville\tChemistry\n"<<endl;
+    cout << "\tBraden\t\tMiami\tComputer Science\n"<<endl;
+    cout << "\tSally\t\tRoanoke\t\tBiology\n"<<endl;
+    cout<<endl;
+}
+//The program is to print a list of student names with their hometowns and intended major.
+//output:
+//Kyla        Knoxville       Chemistry
+//Braden      Miami           Computer Science
+//Sally       Roanoke         Biology
+
+
+/* 
+//Ideal Weight Program 
+//Program that is used to compute the ideal weight for both males and females
+*/
+#include <iostream>
+using namespace std;
+
+int main() {
+    int heightInInches;
+    char gender;
+
+    cout << "Enter height in inches: 5 9 ";
+    cin >> heightInInches; 
+    cout << "Enter gender (M/F): M";
+    cin >> gender;
+
+    int idealWeight;
+    if (gender == 'M' || gender == 'm') {
+        idealWeight = 106 + 6 * (heightInInches - 60);
+    } else if (gender == 'F' || gender == 'f') {
+        idealWeight = 100 + 5 * (heightInInches - 60);
+    } else {
+        cout << "Invalid gender input." << endl;
+        return 1;
+    }
+
+    cout << "The ideal weight is " << idealWeight << " pounds." << endl;
     return 0;
 }
-// The program is to print out the name, hometown, and major of the student.
+//output:
+//Enter height in inches: 5 9
+//Ideal weight is 160 popunds
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int heightInInches;
+    char gender;
+
+    cout << "Enter height in inches: 5 9 ";
+    cin >> heightInInches; 
+    cout << "Enter gender (M/F): F";
+    cin >> gender;
+
+    int idealWeight;
+    if (gender == 'M' || gender == 'm') {
+        idealWeight = 106 + 6 * (heightInInches - 60);
+    } else if (gender == 'F' || gender == 'f') {
+        idealWeight = 100 + 5 * (heightInInches - 60);
+    } else {
+        cout << "Invalid gender input." << endl;
+        return 1;
+    }
+
+    cout << "The ideal weight is " << idealWeight << " pounds." << endl;
+    return 0;
+}
+//output:
+//Enter height in inches: 5 9
+//Ideal weight is 135 pounds
+
+
+
+    
