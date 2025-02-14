@@ -1,0 +1,71 @@
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    double startingBalance, annualInterestRate, balance, totalDeposits = 0, totalWithdrawals = 0, totalInterest = 0;
+
+    // Get starting balance and annual interest rate
+    cout << "Enter the starting balance: ";
+    cin >> startingBalance;
+    cout << "Enter the annual interest rate (as a percentage): ";
+    cin >> annualInterestRate;
+
+    // Convert interest rate to decimal
+    annualInterestRate /= 100.0;
+
+    // Initialize balance
+    balance = startingBalance;
+
+    // Loop through each month
+    for (int month = 1; month <= 3; month++) {
+        double deposit, withdrawal, monthlyInterest;
+
+        // Get deposit amount
+        do {
+            cout << "Enter the total deposit for month " << month << ": ";
+            cin >> deposit;
+            if (deposit < 0) {
+                cout << "Deposit cannot be negative. Please enter a valid amount.\n";
+            }
+        } while (deposit < 0);
+        
+        balance += deposit;
+        totalDeposits += deposit;
+
+        // Get withdrawal amount
+        do {
+            cout << "Enter the total withdrawal for month " << month << ": ";
+            cin >> withdrawal;
+            if (withdrawal < 0) {
+                cout << "Withdrawal cannot be negative. Please enter a valid amount.\n";
+            } else if (withdrawal > balance) {
+                cout << "Withdrawal cannot exceed current balance. Please enter a valid amount.\n";
+            }
+        } while (withdrawal < 0 || withdrawal > balance);
+        
+        balance -= withdrawal;
+        totalWithdrawals += withdrawal;
+
+        // Calculate interest for the month
+        double monthlyInterestRate = annualInterestRate / 12;
+        monthlyInterest = monthlyInterestRate * ((startingBalance + balance) / 2);
+        balance += monthlyInterest;
+        totalInterest += monthlyInterest;
+
+        // Update starting balance for next month
+        startingBalance = balance;
+    }
+
+    // Display final report
+    cout << fixed << setprecision(2);
+    cout << "\nFinal Report:\n";
+    cout << "Starting balance: $" << startingBalance << endl;
+    cout << "Total deposits: $" << totalDeposits << endl;
+    cout << "Total withdrawals: $" << totalWithdrawals << endl;
+    cout << "Total interest earned: $" << totalInterest << endl;
+    cout << "Final balance: $" << balance << endl;
+
+    return 0;
+}
